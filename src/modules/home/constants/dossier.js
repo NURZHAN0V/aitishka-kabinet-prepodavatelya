@@ -1,0 +1,78 @@
+/** Мок преподавателя и KPI досье */
+
+export const TEACHER_USER = {
+  id: 'teacher-1',
+  name: 'Ирина Сергеевна Ковалёва',
+  role: 'Преподаватель',
+  email: 'i.kovaleva@itcampsochi.ru',
+  phone: '+7 (918) 555-12-34',
+  startDate: '2022-09-01',
+  subjects: ['Python', 'Scratch'],
+  avatar: '',
+}
+
+export const DOSSIER_KPIS = [
+  {
+    id: 'groups',
+    label: 'Групп',
+    value: 4,
+    unit: '',
+    icon: 'user-group',
+    delta: 0,
+    href: '/students',
+  },
+  {
+    id: 'homework-review',
+    label: 'Заданий на проверке',
+    value: 12,
+    unit: '',
+    icon: 'book-open-01',
+    delta: 3,
+    href: '/homework',
+  },
+  {
+    id: 'unmarked',
+    label: 'Неотмеченных занятий',
+    value: 2,
+    unit: '',
+    icon: 'clipboard',
+    delta: -1,
+    href: '/journal',
+  },
+  {
+    id: 'overdue-unmarked',
+    label: 'Просроченных неотмеченных',
+    value: 1,
+    unit: '',
+    icon: 'alert-circle',
+    delta: 1,
+    href: '/journal',
+  },
+  {
+    id: 'attendance',
+    label: 'Средняя посещаемость',
+    value: 92,
+    unit: '%',
+    icon: 'check-circle',
+    delta: 2,
+    href: '/grades',
+  },
+  {
+    id: 'performance',
+    label: 'Средняя успеваемость',
+    value: 4.3,
+    unit: '',
+    icon: 'star',
+    delta: -0.1,
+    href: '/grades',
+  },
+  {
+    id: 'grades-month',
+    label: 'Выставлено оценок за месяц',
+    value: 86,
+    unit: '',
+    icon: 'chart-bar',
+    delta: 14,
+    href: '/grades',
+  },
+]

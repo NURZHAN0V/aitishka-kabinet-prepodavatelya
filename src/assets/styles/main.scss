@@ -1,0 +1,122 @@
+@use 'fonts';
+@use 'tokens' as *;
+@use 'mixins';
+
+:root {
+  // Brand
+  --color-primary: #{$color-primary};
+  --color-primary-hover: #{$color-primary-hover};
+  --color-primary-active: #{$color-primary-active};
+  --color-primary-light: #{$color-primary-light};
+
+  // Semantic
+  --color-success: #{$color-success};
+  --color-success-light: #{$color-success-light};
+  --color-warning: #{$color-warning};
+  --color-warning-light: #{$color-warning-light};
+  --color-error: #{$color-error};
+  --color-error-light: #{$color-error-light};
+  --color-info: #{$color-info};
+  --color-info-light: #{$color-info-light};
+  --color-overdue: #{$color-overdue};
+  --color-overdue-light: #{$color-overdue-light};
+  --color-neutral: #{$color-neutral};
+  --color-neutral-light: #{$color-neutral-light};
+
+  // Coins
+  --color-coin: #{$color-coin};
+  --color-coin-dark: #{$color-coin-dark};
+
+  // Surfaces
+  --color-bg-page: #{$color-bg-page};
+  --color-bg-sidebar: #{$color-bg-sidebar};
+  --color-bg-card: #{$color-bg-card};
+  --color-bg-muted: #{$color-bg-muted};
+  --color-bg-overlay: #{$color-bg-overlay};
+
+  // Text
+  --color-text-primary: #{$color-text-primary};
+  --color-text-secondary: #{$color-text-secondary};
+  --color-text-muted: #{$color-text-muted};
+  --color-text-inverse: #{$color-text-inverse};
+
+  // Borders
+  --color-border: #{$color-border};
+  --color-border-light: #{$color-border-light};
+
+  // Homework statuses
+  --homework-current: #{$homework-status-current};
+  --homework-current-bg: #{$homework-status-current-bg};
+  --homework-pending: #{$homework-status-pending};
+  --homework-pending-bg: #{$homework-status-pending-bg};
+  --homework-approved: #{$homework-status-approved};
+  --homework-approved-bg: #{$homework-status-approved-bg};
+  --homework-rejected: #{$homework-status-rejected};
+  --homework-rejected-bg: #{$homework-status-rejected-bg};
+  --homework-overdue: #{$homework-status-overdue};
+  --homework-overdue-bg: #{$homework-status-overdue-bg};
+  --homework-missing: #{$homework-status-missing};
+  --homework-missing-bg: #{$homework-status-missing-bg};
+
+  // Subjects
+  @each $name, $color in $subject-colors {
+    --subject-#{$name}: #{$color};
+  }
+
+  // Gradients
+  --gradient-primary: #{$gradient-primary};
+  --gradient-blue: #{$gradient-blue};
+  --gradient-green: #{$gradient-green};
+  --gradient-orange: #{$gradient-orange};
+  --gradient-coin: #{$gradient-coin};
+  --gradient-banner: #{$gradient-banner};
+
+  // Radius
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --radius-2xl: #{$radius-2xl};
+  --radius-card: #{$radius-card};
+  --radius-button: #{$radius-button};
+  --radius-chip: #{$radius-chip};
+
+  // Shadows
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+  --shadow-card: #{$shadow-card};
+  --shadow-modal: #{$shadow-modal};
+
+  // Typography
+  --font-family-base: #{$font-family-base};
+  --font-size-root: #{$font-size-root};
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: $font-size-root;
+}
+
+body {
+  margin: 0;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $color-text-primary;
+  background-color: $color-bg-page;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+[role='tab'],
+[role='menuitem'],
+[role='option'],
+summary {
+  @include mixins.no-select;
+}

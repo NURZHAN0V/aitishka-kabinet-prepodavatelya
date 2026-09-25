@@ -1,0 +1,144 @@
+@use 'sass:map';
+@use 'tokens' as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@mixin focus-ring {
+  outline: 2px solid $color-border-focus;
+  outline-offset: 2px;
+}
+
+@mixin card-surface {
+  background-color: $color-bg-card;
+  border: 1px solid $color-border-light;
+  border-radius: $radius-card;
+  box-shadow: none;
+}
+
+@mixin homework-status-chip($status) {
+  $config: map.get($homework-status-colors, $status);
+
+  color: map.get($config, text);
+  background-color: map.get($config, bg);
+}
+
+@mixin keyland-title-text {
+  font-family: $font-family-display;
+  font-weight: $font-weight-normal;
+  color: rgba(255, 246, 232, 0.9);
+  line-height: $line-height-tight;
+  letter-spacing: 0.015em;
+  text-shadow: 0 1px 10px rgba(10, 6, 32, 0.28);
+}
+
+@mixin keyland-cover-title-text {
+  @include keyland-title-text;
+  font-size: clamp(2.25rem, 5.2vw, 3.875rem);
+  letter-spacing: 0.035em;
+  color: #fff8ef;
+  -webkit-text-stroke: 1.5px rgba(88, 28, 135, 0.9);
+  paint-order: stroke fill;
+  text-shadow:
+    0 2px 0 rgba(76, 29, 149, 0.85),
+    0 4px 0 rgba(59, 7, 100, 0.7),
+    0 0 28px rgba(168, 85, 247, 0.42),
+    0 8px 22px rgba(10, 6, 32, 0.55);
+}
+
+@mixin banner-slogan-text {
+  color: $banner-slogan-color;
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  -webkit-text-stroke: 3.5px $banner-slogan-stroke;
+  paint-order: stroke fill;
+  text-shadow:
+    0 2px 0 $banner-slogan-stroke,
+    0 3px 0 $banner-slogan-stroke,
+    0 4px 0 $banner-slogan-shadow,
+    0 5px 0 #172554,
+    0 8px 18px rgba(15, 23, 42, 0.42);
+}
+
+@mixin press-scale($scale: 0.94) {
+  transform: scale(1);
+  transition: transform $transition-press;
+
+  &:active:not(:disabled):not([aria-disabled='true']) {
+    transform: scale($scale);
+    transition-duration: $transition-press-in;
+  }
+}
+
+@mixin media-phone {
+  @media (max-width: $bp-phone) {
+    @content;
+  }
+}
+
+@mixin media-tablet-down {
+  @media (max-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin media-laptop-down {
+  @media (max-width: $bp-laptop) {
+    @content;
+  }
+}
+
+@mixin touch-target($size: $touch-target-min) {
+  min-width: $size;
+  min-height: $size;
+}
+
+@mixin safe-area-padding($sides: bottom) {
+  @if $sides == bottom or $sides == all {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+  @if $sides == top or $sides == all {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+  @if $sides == left or $sides == all {
+    padding-left: env(safe-area-inset-left, 0);
+  }
+  @if $sides == right or $sides == all {
+    padding-right: env(safe-area-inset-right, 0);
+  }
+}
+
+/** Горизонтальный скролл чипов/фильтров с fade-намёком справа. */
+@mixin chip-scroll-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: $space-2;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  padding-bottom: $space-1;
+  margin-inline: -#{$space-1};
+  padding-inline: $space-1;
+  mask-image: linear-gradient(to right, #000 0%, #000 calc(100% - 28px), transparent 100%);
+
+  > * {
+    flex-shrink: 0;
+  }
+}
